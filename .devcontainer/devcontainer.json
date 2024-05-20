@@ -1,0 +1,25 @@
+{
+    "name": "Vue (Community)",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
+    "customizations": { 
+        "vscode": {
+            "settings": { 
+                "terminal.integrated.defaultProfile.linux": "/bin/bash"
+            },
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "octref.vetur"
+            ]
+        }
+    },
+    "forwardPorts": [
+        5173
+    ],
+    "remoteUser": "node"
+}

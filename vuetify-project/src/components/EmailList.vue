@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <v-list>
-      <v-list-item v-for="email in emails" :key="email.id">
-        <v-list-item-content>
-          <v-list-item-title>{{ email.subject }}</v-list-item-title>
-          <v-list-item-subtitle>{{ email.sender }}</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-  </div>
+  <v-list>
+    <v-list-item v-for="email in emails" :key="email.id" @click="viewEmail(email)">
+      <v-list-item-content>
+        <v-list-item-title>{{ email.subject }}</v-list-item-title>
+        <v-list-item-subtitle>{{ email.sender }}</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+  </v-list>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { defineProps } from 'vue'
 
-const emails = ref([
-  { id: 1, subject: 'Hello World', sender: 'john@example.com' },
-  // Add more emails here
-])
+const props = defineProps({
+  emails: Array
+})
+
+const viewEmail = (email) => {
+  // Implement email viewing logic here
+  console.log('View email:', email)
+}
 </script>

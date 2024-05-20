@@ -1,8 +1,6 @@
-// Plugins/vuetify.ts
-
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import { aliases, mdi } from 'vuetify/lib/iconsets/mdi-svg'
 
 const vuetify = createVuetify({
   icons: {
@@ -10,17 +8,6 @@ const vuetify = createVuetify({
     aliases,
     sets: {
       mdi,
-    },
-  },
-  theme: {
-    defaultTheme: 'light',
-    themes: {
-      light: {
-        colors: {
-          primary: '#6200ea',
-          secondary: '#03dac6',
-        },
-      },
     },
   },
 })

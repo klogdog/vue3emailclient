@@ -2,19 +2,14 @@ import { defineStore } from 'pinia'
 
 export const useEmailStore = defineStore('email', {
   state: () => ({
-    inbox: [],
-    sent: [],
-    drafts: [],
+    emails: [
+      { id: 1, subject: 'Hello World', sender: 'john@example.com', body: '<!-- SDP_DigitalSKUs --> <span style="display: block; color: red;"></span> <!DOCTYPE html ...</html>' },
+      // Add more emails here
+    ]
   }),
   actions: {
-    sendEmail(email) {
-      this.sent.push(email)
-    },
-    saveDraft(email) {
-      this.drafts.push(email)
-    },
-    receiveEmail(email) {
-      this.inbox.push(email)
-    },
-  },
+    getEmailById(id) {
+      return this.emails.find(email => email.id === parseInt(id))
+    }
+  }
 })

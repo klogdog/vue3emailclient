@@ -2,7 +2,8 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <v-list>
+        <v-progress-circular v-if="loading" indeterminate color="primary"></v-progress-circular>
+        <v-list v-else>
           <v-list-item v-for="email in emails" :key="email.id" @click="selectEmail(email)">
             <v-list-item-content>
               <v-list-item-title>{{ email.subject }}</v-list-item-title>
@@ -22,6 +23,7 @@ import { useRouter } from 'vue-router';
 import apiClient from '@/plugins/axios';
 
 const emails = ref([]);
+const loading = ref(true);
 const router = useRouter();
 
 const loadEmails = async () => {
@@ -29,7 +31,9 @@ const loadEmails = async () => {
     const response = await apiClient.get('/inbox');
     emails.value = response.data;
   } catch (error) {
-    console.error('Failed to fetch emails:', error); // Log the error
+    console.error('Failed to fetch emails:', error);
+  } finally {
+    loading.value = false;
   }
 };
 
